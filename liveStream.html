@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Live Stream</title>
+ 
+    <link rel="stylesheet" href="leafletPm/leaflet.pm.css">
+    <link rel="stylesheet" href="leaflet/leaflet.css">
+    <link rel="stylesheet" href="dist/css/style.css" />
+    <link rel="stylesheet" href="LeafletStyleEditor/Leaflet.StyleEditor.min.css" />
+   
+</head>
+
+<body>
+    <div class="wrapper livestream">
+        <article>
+            <div class="export areas">
+                <div class=" leaflet-pm-toolbar   leaflet-pm-toolbar leaflet-bar leaflet-control">
+                    <a class="leaflet-buttons-control-button ">
+                        <div class="control-icon leaflet-pm-icon-file">
+                            <input type="checkbox" id="areas" name="areas" onclick="importjson()" value="" />
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="map mapContainer" id="simpleShapes"></div>
+        </article>
+    </div>
+ 
+    <script type="text/javascript" src="dist/js/visualspace.geojson" type="text/javascript"></script>
+    <script type="text/javascript" src="leaflet/leaflet.js"></script>
+    <script type="text/javascript" src="dist/js/jquery.min.js"></script>
+    <script type="text/javascript" src="LeafletStyleEditor/Leaflet.StyleEditor.min.js"></script>
+    <script type="text/javascript" src="leafletMovingMarker/MovingMarker.js"></script>
+    <script type="text/javascript" src="leafletPm/leaflet.pm.min.js"></script>
+    <script type="text/javascript" src="dist/js/livestream.js"></script>
+    <script>
+
+        var tagObjs = [
+            {
+                id: "111",
+                name: "denme",
+                action: "add",
+                coordx: 200,
+                coordy: 200,
+                time: 0
+            },
+            {
+                id: "222",
+                name: "tolga",
+                action: "add",
+                coordx: 200,
+                coordy: 400,
+                time: 0
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "add",
+                coordx: 400,
+                coordy: 500,
+                time: 0
+            },
+            {
+                id: "111",
+                name: "denme",
+                action: "move",
+                coordx: 300,
+                coordy: 300,
+                time: 1
+            },
+            {
+                id: "222",
+                name: "tolga",
+                action: "move",
+                coordx: 300,
+                coordy: 300,
+                time: 10
+            }, {
+                id: "333",
+                name: "Onur",
+                action: "move",
+                coordx: 300,
+                coordy: 300,
+                time: 3
+            },
+            {
+                id: "111",
+                name: "denme",
+                action: "move",
+                coordx: 200,
+                coordy: 450,
+                time: 5
+            },
+            {
+                id: "222",
+                name: "tolga",
+                action: "move",
+                coordx: 000,
+                coordy: 500,
+                time: 1
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "move",
+                coordx: 500,
+                coordy: 100,
+                time: 2
+            },
+            {
+                id: "111",
+                name: "denme",
+                action: "remove",
+                coordx: 200,
+                coordy: 450,
+                time: 3
+            },
+            {
+                id: "222",
+                name: "tolga",
+                action: "move",
+                coordx: 000,
+                coordy: 500,
+                time: 4
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "move",
+                coordx: 500,
+                coordy: 100,
+                time: 5
+            },
+            {
+                id: "222",
+                name: "tolga",
+                action: "move",
+                coordx: 050,
+                coordy: 550,
+                time: 3
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "move",
+                coordx: 550,
+                coordy: 150,
+                time: 1
+            },
+            {
+                id: "222",
+                name: "tolga",
+                action: "move",
+                coordx: 150,
+                coordy: 450,
+                time: 2
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "move",
+                coordx: 450,
+                coordy: 250,
+                time: 4
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "move",
+                coordx: 400,
+                coordy: 200,
+                time: 4
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "move",
+                coordx: 350,
+                coordy: 150,
+                time: 4
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "move",
+                coordx: 300,
+                coordy: 100,
+                time: 4
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "move",
+                coordx: 250,
+                coordy: 50,
+                time: 4
+            },
+            {
+                id: "111",
+                name: "denme",
+                action: "move",
+                coordx: 390,
+                coordy: 560,
+                time: 1
+            },
+            {
+                id: "222",
+                name: "tolga",
+                action: "move",
+                coordx: 100,
+                coordy: 400,
+                time: 3
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "move",
+                coordx: 300,
+                coordy: 150,
+                time: 4
+            },
+            {
+                id: "111",
+                name: "denme",
+                action: "remove",
+                coordx: 380,
+                coordy: 500,
+                time: 0
+            },
+            {
+                id: "222",
+                name: "tolga",
+                action: "remove",
+                coordx: 330,
+                coordy: 500,
+                time: 0
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "move",
+                coordx: 200,
+                coordy: 50,
+                time: 4
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "move",
+                coordx: 150,
+                coordy: 50,
+                time: 4
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "move",
+                coordx: 100,
+                coordy: 50,
+                time: 4
+            },
+            {
+                id: "555",
+                name: "mehmet",
+                action: "add",
+                coordx: 200,
+                coordy: 200,
+                time: 0
+            },
+            {
+                id: "555",
+                name: "mehmet",
+                action: "move",
+                coordx: 250,
+                coordy: 200,
+                time: 1
+            },
+            {
+                id: "555",
+                name: "mehmet",
+                action: "move",
+                coordx: 300,
+                coordy: 200,
+                time: 2
+            },
+            {
+                id: "555",
+                name: "mehmet",
+                action: "move",
+                coordx: 350,
+                coordy: 200,
+                time: 3
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "move",
+                coordx: 50,
+                coordy: 50,
+                time: 4
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "move",
+                coordx: 50,
+                coordy: 150,
+                time: 4
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "move",
+                coordx: 50,
+                coordy: 250,
+                time: 4
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "move",
+                coordx: 50,
+                coordy: 450,
+                time: 1
+            },
+            {
+                id: "333",
+                name: "Onur",
+                action: "remove",
+                coordx: 340,
+                coordy: 500,
+                time: 0
+            },
+        ];
+
+        var simulationCount = 0;
+
+        var myInterval = setInterval(function () {
+            timerSimulation()
+        }, 1000);
+
+        function timerSimulation() {
+
+            runTransitions(tagObjs[simulationCount]);
+            simulationCount++;
+            runTransitions(tagObjs[simulationCount]);
+            simulationCount++;
+            runTransitions(tagObjs[simulationCount]);
+            simulationCount++;
+            if (simulationCount >= tagObjs.length) {
+                clearInterval(myInterval);
+            }
+        }
+
+        function runTransitions(transObj) {
+            if (transObj) {
+                if (transObj.action == "add") {
+                    addNewObj(transObj);
+                }
+                else if (transObj.action == "remove") {
+                    removeObj(transObj);
+                }
+                else if (transObj.action == "move") {
+                    moveObj(transObj);
+                }
+            }
+        }
+        newObj = [];
+        function addNewObj(that) {
+            newObj[that.id] = L.Marker.movingMarker([[that.coordy, that.coordx]], [])
+                .bindPopup(that.name)
+                .addTo(map2);
+            $('#simpleShapes').append(newObj[that.id]);
+        }
+
+        function moveObj(that) {
+            that.time = that.time * 1000;
+            newObj[that.id].moveTo([that.coordy, that.coordx], that.time);
+        };
+
+        function removeObj(that) {
+            map2.removeLayer(newObj[that.id]);
+        }
+
+    </script>
+</body>
+
+</html>

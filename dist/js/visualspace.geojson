@@ -1,0 +1,30 @@
+var default2=[
+  {
+    clr : "#27ae60",
+    "ltlng": [
+     [
+        [303, 182],
+        [466, 182],
+        [466, 344],
+        [303, 344]
+      ]
+      
+    ]
+  },
+  {
+    clr : "#f1c40f",
+    "ltlng": [
+     [
+        [203, 282],
+        [66, 282],
+        [66, 244],
+        [203, 244]
+      ]
+      
+    ]
+  }
+
+  ]
+  var layerObjectArray=[]
+  var default4=[]
+  var layerObjectArray2=[]

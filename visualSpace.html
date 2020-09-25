@@ -1,0 +1,96 @@
+<!DOCTYPE>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>livestream visualspace</title>
+  <link rel="stylesheet" href="leaflet/leaflet.css">
+  <link rel="stylesheet" href="dist/fontawesome/css/all.css">
+  <link rel="stylesheet" href="leafletPm/leaflet.pm.css">
+  <link rel="stylesheet" href="dist/css/style.css" />
+  <link rel="stylesheet" href="LeafletStyleEditor/Leaflet.StyleEditor.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+    crossorigin="anonymous">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <article>
+      <div class="export">
+        <div class=" leaflet-pm-toolbar  leaflet-pm-toolbar leaflet-bar leaflet-control">
+          <a class="leaflet-buttons-control-button" onclick="exportjson()">
+            <div class="control-icon leaflet-pm-icon-file">
+              <i class="fas fa-file-export"></i>
+            </div>
+          </a>
+        </div>
+        <br>
+        <div class=" leaflet-pm-toolbar   leaflet-pm-toolbar leaflet-bar leaflet-control">
+          <a class="leaflet-buttons-control-button " onclick="importjson()">
+            <div class="control-icon leaflet-pm-icon-file">
+              <i class="fas fa-file-import"></i>
+            </div>
+          </a>
+        </div>
+        <br>
+        <div class=" leaflet-pm-toolbar   leaflet-pm-toolbar leaflet-bar leaflet-control">
+          <a class="leaflet-buttons-control-button ">
+            <div class="control-icon leaflet-pm-icon-file">
+              <input type="checkbox" id="names" name="names" onclick="showName()" value="" />
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="map" id="simpleShapes"></div>
+
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Yeni alan ismi</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">İsim:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
+              <button type="button" class="btn btn-primary" onclick="myfunction()">Kaydet</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <script type="text/javascript" src="dist/js/visualspace.geojson"></script>
+  <script type="text/javascript" src="leaflet/leaflet.js"></script>
+  <script type="text/javascript" src="LeafletStyleEditor/Leaflet.StyleEditor.min.js"></script>
+  <script type="text/javascript" src="leafletPm/leaflet.pm.min.js"></script>
+  <script type="text/javascript" src="dist/js/visualspace.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+    crossorigin="anonymous"></script>
+
+
+
+
+
+</body>
+
+</html>
